@@ -655,7 +655,7 @@ static DECLCALLBACK(int) drvHostPulseAudioInit(PPDMIHOSTAUDIO pInterface)
             break;
         }
 
-        if (!(pThis->pContext = pa_context_new(pa_threaded_mainloop_get_api(pThis->pMainLoop), "Realtek")))
+        if (!(pThis->pContext = pa_context_new(pa_threaded_mainloop_get_api(pThis->pMainLoop), "VirtualBox")))
         {
             LogRel(("PulseAudio: Failed to allocate context: %s\n",
                      pa_strerror(pa_context_errno(pThis->pContext))));

@@ -733,13 +733,13 @@ protected:
 
     QString shortcutExtraDataID() const
     {
-        return QString("Intel");
+        return QString("Oracle");
     }
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "&VektorT13 Web Site..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Open the browser and go to the VektorT13 web site"));
+        setName(QApplication::translate("UIActionPool", "&Oracle Web Site..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Open the browser and go to the Oracle web site"));
     }
 };
 

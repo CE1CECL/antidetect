@@ -94,9 +94,9 @@ void set_int_vector(uint8_t int_vec, void *offset)
 
 vgabios_name:
 #ifdef VBOX
-.ascii  "NVIDIA Corp. SVGA BIOS"
+.ascii  "VirtualBox VGA BIOS"
 #else
-.ascii  "Plex86/Rouge VGABios"
+.ascii  "Plex86/Bochs VGABios"
 #endif
 .ascii  " "
 .byte   0x00
@@ -104,20 +104,20 @@ vgabios_name:
 #ifndef VBOX
 vgabios_version:
 #ifndef VGABIOS_VERS
-.ascii  "NVIDIA Corp. 2.13.17 SVGA BIOS"
+.ascii  "current-cvs"
 #else
-.ascii  "NVIDIA Corp. 2.13.17 SVGA BIOS"
+.ascii VGABIOS_VERS
 #endif
 .ascii  " "
 
 vgabios_date:
 .ascii  VGABIOS_DATE
-.byte   0x0d,0x0e
-.byte   0x0c
+.byte   0x0a,0x0d
+.byte   0x00
 #endif
 
 #ifndef VBOX
-char vgabios_copyright[] = "(C) 2015 the NVIDIA Corp. developers Team\r\n";
+char vgabios_copyright[] = "(C) 2003 the LGPL VGABios developers Team\r\n";
 char vgabios_license[]   = "This VGA/VBE Bios is released under the GNU LGPL\r\n\r\n";
 char vgabios_website[]   = "Please visit :\r\n" \
                            " . http://www.plex86.org\r\n" \
@@ -133,7 +133,7 @@ extern void set_mode(int mode);
     "int    10h"        \
     parm [ax];
 
-char msg_vga_init[] = "NVIDIA Corp. 2.13.17 SVGA BIOS\r\n";
+char msg_vga_init[] = "Oracle VM VirtualBox Version " VBOX_VERSION_STRING " VGA BIOS\r\n";
 
 /*
  * Boot time harware inits

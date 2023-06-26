@@ -833,7 +833,7 @@ void UIMachineSettingsSystem::prepareTabProcessor()
     const uint uHostCPUs = vboxGlobal().host().GetProcessorOnlineCoreCount();
     m_uMinGuestCPU = properties.GetMinGuestCPUCount();
     m_uMaxGuestCPU = qMin(2 * uHostCPUs, (uint)properties.GetMaxGuestCPUCount());
-    m_uMinGuestCPUExecCap = 2;
+    m_uMinGuestCPUExecCap = 1;
     m_uMedGuestCPUExecCap = 40;
     m_uMaxGuestCPUExecCap = 100;
 

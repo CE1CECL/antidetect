@@ -85,16 +85,16 @@ extern void     __cdecl dispi_set_bank_farcall(void);
 #define VBE_OEM_SOFTWARE_REV 0x0003
 
 // FIXME: 'merge' these (c) etc strings with the vgabios.c strings?
-char vbebios_copyright[]        = "NVIDIA VESA BIOS";
+char vbebios_copyright[]        = "VirtualBox VESA BIOS";
 char vbebios_vendor_name[]      = VBOX_VENDOR;
 char vbebios_product_name[]     = VBOX_PRODUCT " VBE Adapter";
 char vbebios_product_revision[] = VBOX_PRODUCT " Version " VBOX_VERSION_STRING;
 
-char vbebios_info_string[]    = "NVIDIA VBE Display Adapter enabled\r\n\r\n";
-char no_vbebios_info_string[] = "No NVIDIA VBE support available!\r\n\r\n";
+char vbebios_info_string[]    = "VirtualBox VBE Display Adapter enabled\r\n\r\n";
+char no_vbebios_info_string[] = "No VirtualBox VBE support available!\r\n\r\n";
 
 #ifdef VGA_DEBUG
-char msg_vbe_init[] = "NVIDIA Corp. Version " VBOX_VERSION_STRING " VBE Display Adapter\r\n";
+char msg_vbe_init[] = "VirtualBox Version " VBOX_VERSION_STRING " VBE Display Adapter\r\n";
 #endif
 
 static void dispi_set_xres(uint16_t xres)

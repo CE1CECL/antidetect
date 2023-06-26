@@ -211,7 +211,7 @@ static DECLCALLBACK(int) devPlaygroundConstruct(PPDMDEVINS pDevIns, int iInstanc
         RTStrPrintf(pFun->szName, sizeof(pThis->aPciFuns[iPciFun].PciDev), "playground%u", iPciFun);
         pFun->iFun = iPciFun;
 
-        PCIDevSetVendorId( &pFun->PciDev, 0x8086);
+        PCIDevSetVendorId( &pFun->PciDev, 0x80ee);
         PCIDevSetDeviceId( &pFun->PciDev, 0xde4e);
         PCIDevSetClassBase(&pFun->PciDev, 0x07);   /* communications device */
         PCIDevSetClassSub( &pFun->PciDev, 0x80);   /* other communications device */

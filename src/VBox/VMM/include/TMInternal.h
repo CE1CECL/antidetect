@@ -324,9 +324,9 @@ typedef TMCPULOADSTATE *PTMCPULOADSTATE;
 typedef enum TMTSCMODE
 {
     /** The guest TSC is an emulated, virtual TSC. */
-    TMTSCMODE_VIRT_TSC_EMULATED,								/*0303*/
+    TMTSCMODE_VIRT_TSC_EMULATED = 1,
     /** The guest TSC is an offset of the real TSC. */
-    TMTSCMODE_REAL_TSC_OFFSET = 1,
+    TMTSCMODE_REAL_TSC_OFFSET,
     /** The guest TSC is dynamically derived through emulating or offsetting. */
     TMTSCMODE_DYNAMIC
 } TMTSCMODE;

@@ -3264,7 +3264,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
              * intelppm driver refuses to register an idle state handler.
              * Always show CPU leafs for OS X guests. */
             BOOL fShowCpu = fOsXGuest;
-            if (cCpus > 2 || fIOAPIC) 										/*0303*/
+            if (cCpus > 1 || fIOAPIC)
                 fShowCpu = true;
 
             BOOL fCpuHotPlug;

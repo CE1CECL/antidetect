@@ -57,9 +57,9 @@ __FBSDID("$FreeBSD$");
 #include "dev/drm/drmP.h"
 #include "dev/drm/drm_pciids.h"
 
-#define DRIVER_AUTHOR                   "NVIDIA Corporation"
-#define DRIVER_NAME                     "nvidvideo"
-#define DRIVER_DESC                     "NVIDIA DRM"
+#define DRIVER_AUTHOR                   "Oracle Corporation"
+#define DRIVER_NAME                     "vboxvideo"
+#define DRIVER_DESC                     "VirtualBox DRM"
 #define DRIVER_DATE                     "20090317"
 #define DRIVER_MAJOR                    1
 #define DRIVER_MINOR                    0
@@ -67,7 +67,7 @@ __FBSDID("$FreeBSD$");
 
 /** @todo Take PCI IDs from VBox/param.h; VBOX_VESA_VENDORID,
  *        VBOX_VESA_DEVICEID. */
-#define vboxvideo_PCI_IDS           { 0x10de, 0x13fe, 0, "NVIDIA Corp." }, \
+#define vboxvideo_PCI_IDS           { 0x80ee, 0xbeef, 0, "VirtualBox Video" }, \
                                     { 0, 0, 0, NULL }
 
 static drm_pci_id_list_t vboxvideo_pciidlist[] = {

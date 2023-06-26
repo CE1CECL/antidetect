@@ -1822,7 +1822,7 @@ BEGINCODEHIGH
         mov     sAX, BS2_SEL_R3_SS16 | 3
         push    sAX                     ; Return SS
         movzx   edi, bx
-        or      edi, 0xdeed0000
+        or      edi, 0xdead0000
         push    sDI                     ; Return sSP
 %ifdef TMPL_64BIT
         pushfq

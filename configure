@@ -553,7 +553,7 @@ check_open_watcom()
     "netbsd")   wc_bin="binnbsd";; # ??
     "solaris")  wc_bin="binsol";;  # ??
     "os2")      wc_bin="binp";;
-    "win")      wc_bin="binnt64";;
+    "win")      wc_bin="binnt";;
     *)          wc_bin="binl";;
   esac
 

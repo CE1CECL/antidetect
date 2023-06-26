@@ -7642,12 +7642,12 @@ static DECLCALLBACK(int) ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
                     if (RT_FAILURE(rc) || RTUuidIsNull(&Uuid))
                     {
                         /* Generate a predictable serial for drives which don't have a UUID. */
-                        RTStrPrintf(szSerial, sizeof(szSerial), "SN%x-%04x%04x",
+                        RTStrPrintf(szSerial, sizeof(szSerial), "VB%x-%04x%04x",
                                     pIf->iLUN + pDevIns->iInstance * 32,
                                     pThis->aCts[i].IOPortBase1, pThis->aCts[i].IOPortBase2);
                     }
                     else
-                        RTStrPrintf(szSerial, sizeof(szSerial), "SN%08x-%08x", Uuid.au32[0], Uuid.au32[3]);
+                        RTStrPrintf(szSerial, sizeof(szSerial), "VB%08x-%08x", Uuid.au32[0], Uuid.au32[3]);
 
                     /* Get user config if present using defaults otherwise. */
                     PCFGMNODE pCfgNode = CFGMR3GetChild(pCfg, s_apszCFGMKeys[i][j]);
@@ -7674,7 +7674,7 @@ static DECLCALLBACK(int) ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
                     }
 
                     rc = CFGMR3QueryStringDef(pCfgNode, "ModelNumber", pIf->szModelNumber, sizeof(pIf->szModelNumber),
-                                              pIf->fATAPI ? "Hitachi CD-ROM" : "Seagate HDD Barracuda ST1000DM004");
+                                              pIf->fATAPI ? "VBOX CD-ROM" : "VBOX HARDDISK");
                     if (RT_FAILURE(rc))
                     {
                         if (rc == VERR_CFGM_NOT_ENOUGH_SPACE)
@@ -7688,7 +7688,7 @@ static DECLCALLBACK(int) ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
                     if (pIf->fATAPI)
                     {
                         rc = CFGMR3QueryStringDef(pCfgNode, "ATAPIVendorId", pIf->szInquiryVendorId, sizeof(pIf->szInquiryVendorId),
-                                                  "Hitachi");
+                                                  "VBOX");
                         if (RT_FAILURE(rc))
                         {
                             if (rc == VERR_CFGM_NOT_ENOUGH_SPACE)

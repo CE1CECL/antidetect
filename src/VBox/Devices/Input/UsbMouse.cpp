@@ -51,10 +51,10 @@
 
 /** @name USB HID vendor and product IDs
  * @{ */
-#define VBOX_USB_VENDOR             0x046D
-#define USBHID_PID_MOUSE            0x0301
-#define USBHID_PID_TABLET           0xC016
-#define USBHID_PID_MULTI_TOUCH      0xC004
+#define VBOX_USB_VENDOR             0x80EE
+#define USBHID_PID_MOUSE            0x0020
+#define USBHID_PID_TABLET           0x0021
+#define USBHID_PID_MULTI_TOUCH      0x0022
 /** @} */
 
 
@@ -307,7 +307,7 @@ typedef struct USBHIDMT_REPORT_POINTER
 *********************************************************************************************************************************/
 static const PDMUSBDESCCACHESTRING g_aUsbHidStrings_en_US[] =
 {
-    { USBHID_STR_ID_MANUFACTURER,   "Logitech"      },
+    { USBHID_STR_ID_MANUFACTURER,   "VirtualBox"      },
     { USBHID_STR_ID_PRODUCT_M,      "USB Mouse"       },
     { USBHID_STR_ID_PRODUCT_T,      "USB Tablet"      },
     { USBHID_STR_ID_PRODUCT_MT,     "USB Multi-Touch" },

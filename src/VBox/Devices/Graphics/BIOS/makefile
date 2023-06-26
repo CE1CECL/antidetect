@@ -14,8 +14,8 @@ Q=\"
 Q="
 !endif
 CFLAGS = -q -3 -wx -zu -zl -s -oas -d1 -ms
-DEFS   = -DVBOX -DVBE -DVBOX_VERSION_STRING=$(Q)0.9.90$(Q) -DVBOX_VENDOR=$(Q)Nvidia_Corporation$(Q) -DVBOX_PRODUCT=$(Q)Antidetect 2018 Pro$(Q)
-#DEFS   = -DVBOX -DVBOX_VERSION_STRING=$(Q)0.9$(Q) -DVBOX_VENDOR=$(Q)NVIDIA$(Q) -DVBOX_PRODUCT=$(Q)VideoBios$(Q)
+DEFS   = -DVBOX -DVBE -DVBOX_VERSION_STRING=$(Q)0.9.90$(Q) -DVBOX_VENDOR=$(Q)Oracle_Corporation$(Q) -DVBOX_PRODUCT=$(Q)Oracle_VM_VirtualBox$(Q)
+#DEFS   = -DVBOX -DVBOX_VERSION_STRING=$(Q)0.9$(Q) -DVBOX_VENDOR=$(Q)Oracle$(Q) -DVBOX_PRODUCT=$(Q)VirtualBox$(Q)
 
 AFLAGS = -q -0 -wx
 

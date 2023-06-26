@@ -2778,15 +2778,15 @@ Hardware::Hardware() :
     fAPIC(true),
     fX2APIC(false),
     enmLongMode(HC_ARCH_BITS == 64 ? Hardware::LongMode_Enabled : Hardware::LongMode_Disabled),
-    cCPUs(2),
+    cCPUs(1),
     fCpuHotPlug(false),
-    fHPETEnabled(true),
+    fHPETEnabled(false),
     ulCpuExecutionCap(100),
     uCpuIdPortabilityLevel(0),
     strCpuProfile("host"),
     ulMemorySizeMB((uint32_t)-1),
     graphicsControllerType(GraphicsControllerType_VBoxVGA),
-    ulVRAMSizeMB(256),
+    ulVRAMSizeMB(8),
     cMonitors(1),
     fAccelerate3D(false),
     fAccelerate2DVideo(false),
@@ -2871,7 +2871,7 @@ bool Hardware::areBootOrderDefaultSettings() const
 bool Hardware::areDisplayDefaultSettings() const
 {
     return graphicsControllerType == GraphicsControllerType_VBoxVGA
-        && ulVRAMSizeMB == 256
+        && ulVRAMSizeMB == 8
         && cMonitors <= 1
         && !fAccelerate3D
         && !fAccelerate2DVideo;
@@ -5274,7 +5274,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
         else if (!hw.fAPIC)
             pelmCPU->createChild("APIC")->setAttribute("enabled", hw.fAPIC);
     }
-    if (hw.cCPUs > 2)														/*0303*/
+    if (hw.cCPUs > 1)
         pelmCPU->setAttribute("count", hw.cCPUs);
     if (hw.ulCpuExecutionCap != 100)
         pelmCPU->setAttribute("executionCap", hw.ulCpuExecutionCap);

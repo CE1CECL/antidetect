@@ -26,7 +26,7 @@
 
 [Version]
 Signature="$WINDOWS NT$"
-Provider=%NVIDIA%
+Provider=%ORACLE%
 ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
 Class=System
 DriverPackageType=PlugAndPlay
@@ -53,18 +53,18 @@ VBoxTray_CopyFiles = 11 ; system32
 
 ;x86   [VBoxGuest]
 ;amd64 [VBoxGuest.NTamd64]
-%VBoxGuest.DeviceDesc%=NVIDIA_Install,PCI\VEN_10de&DEV_13c0
+%VBoxGuest.DeviceDesc%=VBoxGuest_Install,PCI\VEN_80ee&DEV_cafe
 
 [VBoxGuest_Install]
 CopyFiles = VBoxGuest_CopyFiles, VBoxTray_CopyFiles
 AddReg = VBoxTray_Add_Reg
 
 [VBoxGuest_CopyFiles]
-NViGe.sys
+VBoxGuest.sys
 
 [VBoxTray_CopyFiles]
-NViGe.exe
-NViGE.exe
+VBoxTray.exe
+VBoxControl.exe
 
 [VBoxGuest_Install.Services]
 AddService = VBoxGuest, 0x00000002, VBoxGuest_ServiceInstallSection
@@ -76,7 +76,7 @@ ServiceType    = 0x00000001 ; kernel driver
 StartType      = 0x00000000 ; boot start
 ErrorControl   = 0x00000001 ; normal error handling
 LoadOrderGroup = Base
-ServiceBinary  = %12%\NviGe.sys
+ServiceBinary  = %12%\VBoxGuest.sys
 
 [VBoxTray_Add_Reg]
 HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\Run, VBoxTray, 0x00000000, %11%\VBoxTray.exe
@@ -85,8 +85,8 @@ HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\Run, VBoxTray, 0x00000000, %11%\
 ; This should fix the error 0xe0000101 (The required section was not found in the INF).
 
 [Strings]
-ORACLE = "NVIDIA Corporation"
-VBoxGuest.DeviceDesc = "NVIDIA Corp."
-VBoxGuest_svcdesc = "NVIDIA 388.1 Driver"
-VBoxTray_svcdesc = "NVIDIA 388.1 Driver"
+ORACLE = "Oracle Corporation"
+VBoxGuest.DeviceDesc = "VirtualBox Device"
+VBoxGuest_svcdesc = "VirtualBox Guest Driver"
+VBoxTray_svcdesc = "VirtualBox Guest Tray"
 

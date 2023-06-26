@@ -2321,7 +2321,7 @@ static int supR3HardenedMainGetTrustedLib(const char *pszProgName, uint32_t fMai
     }
 #ifdef RT_OS_DARWIN
     if (fMainFlags & SUPSECMAIN_FLAGS_OSX_VM_APP)
-        pszProgName = "Software";
+        pszProgName = "VirtualBox";
 #else
     RT_NOREF1(fMainFlags);
 #endif

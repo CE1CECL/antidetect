@@ -243,9 +243,9 @@ ifneq ($(VBOX_RELEASE_EXACT_MATCH),)
 endif
 
 # Some info on the vendor
-VBOX_VENDOR       = Vektor T13 Security Service
-VBOX_VENDOR_SHORT = Vektor T13
-VBOX_PRODUCT      = Antidetect 2018 PRO by Vektor T13
+VBOX_VENDOR       = Oracle Corporation
+VBOX_VENDOR_SHORT = Oracle
+VBOX_PRODUCT      = Oracle VM VirtualBox
 # Not all could be done automatically. Here is a list of known places which
 # have to be updated manually, please keep this up to date:
 #	src/VBox/Devices/PC/PXE/client/uinit.asm

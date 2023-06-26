@@ -229,7 +229,7 @@ BS3_GLOBAL_NAME_EX TMPL_NM(bs3TestCallDoerEpilogue), , 0
         movzx   esp, sp
         sub     esp, BS3REGCTX_size
         mov     [esp + BS3REGCTX.rax], eax
-        mov     dword [esp + BS3REGCTX.rax+4], 0xdeed0000
+        mov     dword [esp + BS3REGCTX.rax+4], 0xdead0000
         mov     [esp + BS3REGCTX.rcx], ecx
         mov     dword [esp + BS3REGCTX.rcx+4], 0xdead0001
         mov     [esp + BS3REGCTX.rdx], edx

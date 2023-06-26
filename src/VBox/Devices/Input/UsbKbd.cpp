@@ -79,8 +79,8 @@
 
 /** @name USB HID vendor and product IDs
  * @{ */
-#define VBOX_USB_VENDOR             0x046D
-#define USBHID_PID_KEYBOARD         0x0213
+#define VBOX_USB_VENDOR             0x80EE
+#define USBHID_PID_KEYBOARD         0x0010
 /** @} */
 
 /** @name USB HID class specific requests
@@ -231,7 +231,7 @@ typedef USBHID *PUSBHID;
 *********************************************************************************************************************************/
 static const PDMUSBDESCCACHESTRING g_aUsbHidStrings_en_US[] =
 {
-    { USBHID_STR_ID_MANUFACTURER,   "Logitech"    },
+    { USBHID_STR_ID_MANUFACTURER,   "VirtualBox"    },
     { USBHID_STR_ID_PRODUCT,        "USB Keyboard"  },
 };
 

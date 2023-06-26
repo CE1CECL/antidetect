@@ -39,7 +39,7 @@
 /** The maximum number of pages that can be allocated and mapped
  * by various MM, PGM and SUP APIs. */
 #if ARCH_BITS == 64
-# define VBOX_MAX_ALLOC_PAGE_COUNT   (_2G32 / PAGE_SIZE)
+# define VBOX_MAX_ALLOC_PAGE_COUNT   (_512M / PAGE_SIZE)
 #else
 # define VBOX_MAX_ALLOC_PAGE_COUNT   (_256M / PAGE_SIZE)
 #endif
@@ -155,20 +155,20 @@
 /** @defgroup   grp_vbox_pci        PCI Identifiers
  * @{ */
 /** VirtualBox PCI vendor ID. */
-#define VBOX_PCI_VENDORID           (0x8086)
+#define VBOX_PCI_VENDORID           (0x80ee)
 
 /** @name VirtualBox graphics card identifiers
  * @{ */
 #define VBOX_VENDORID               VBOX_PCI_VENDORID   /**< @todo wonderful choice of name! Please squeeze a _VGA_ or something in there, please. */
-#define VBOX_DEVICEID               (0x13C0)            /**< @todo ditto. */
+#define VBOX_DEVICEID               (0xbeef)            /**< @todo ditto. */
 #define VBOX_VESA_VENDORID          VBOX_PCI_VENDORID
-#define VBOX_VESA_DEVICEID          (0x13C0)
+#define VBOX_VESA_DEVICEID          (0xbeef)
 /** @} */
 
 /** @name VMMDev PCI card identifiers
  * @{ */
 #define VMMDEV_VENDORID             VBOX_PCI_VENDORID
-#define VMMDEV_DEVICEID             (0x8086)
+#define VMMDEV_DEVICEID             (0xcafe)
 /** @} */
 
 /** @} */

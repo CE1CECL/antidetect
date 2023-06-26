@@ -118,8 +118,8 @@ VBoxDrvFindAdapter(IN PVOID HwDeviceExtension, IN PVOID HwContext, IN PWSTR Argu
             /* NT crashes if either of 'vendorId, 'deviceId' or 'slot' parameters is NULL,
              * and needs PCI ids for a successful VideoPortGetAccessRanges call.
              */
-            ULONG vendorId = 0x10DE;
-            ULONG deviceId = 0x13C0;
+            ULONG vendorId = 0x80EE;
+            ULONG deviceId = 0xBEEF;
             rc = VideoPortGetAccessRanges(pExt, 0, NULL, RT_ELEMENTS(tmpRanges), tmpRanges,
                                           &vendorId, &deviceId, &slot);
         }

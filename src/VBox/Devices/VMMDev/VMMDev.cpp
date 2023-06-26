@@ -3956,9 +3956,9 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     pThis->pDevIns = pDevIns;
 
     /* PCI vendor, just a free bogus value */
-    PCIDevSetVendorId(&pThis->PciDev, 0x8086);
+    PCIDevSetVendorId(&pThis->PciDev, 0x80ee);
     /* device ID */
-    PCIDevSetDeviceId(&pThis->PciDev, 0x340a);
+    PCIDevSetDeviceId(&pThis->PciDev, 0xcafe);
     /* class sub code (other type of system peripheral) */
     PCIDevSetClassSub(&pThis->PciDev, 0x80);
     /* class base code (base system peripheral) */

@@ -5460,11 +5460,11 @@ static int ahciR3VpdInit(PPDMDEVINS pDevIns, PAHCIPort pAhciPort, const char *ps
     if (RT_FAILURE(rc) || RTUuidIsNull(&Uuid))
     {
         /* Generate a predictable serial for drives which don't have a UUID. */
-        RTStrPrintf(szSerial, sizeof(szSerial), "SN%x-1e0bac1b",
+        RTStrPrintf(szSerial, sizeof(szSerial), "VB%x-1a2b3c4d",
                     pAhciPort->iLUN);
     }
     else
-        RTStrPrintf(szSerial, sizeof(szSerial), "SN%08x-%08x", Uuid.au32[0], Uuid.au32[3]);
+        RTStrPrintf(szSerial, sizeof(szSerial), "VB%08x-%08x", Uuid.au32[0], Uuid.au32[3]);
 
     /* Get user config if present using defaults otherwise. */
     PCFGMNODE pCfgNode = CFGMR3GetChild(pDevIns->pCfg, pszName);
@@ -5491,7 +5491,7 @@ static int ahciR3VpdInit(PPDMDEVINS pDevIns, PAHCIPort pAhciPort, const char *ps
     }
 
     rc = CFGMR3QueryStringDef(pCfgNode, "ModelNumber", pAhciPort->szModelNumber, sizeof(pAhciPort->szModelNumber),
-                              pAhciPort->fATAPI ? "Hitachi CD-ROM" : "Seagate HDD Barracuda ST1000DM004");
+                              pAhciPort->fATAPI ? "VBOX CD-ROM" : "VBOX HARDDISK");
     if (RT_FAILURE(rc))
     {
         if (rc == VERR_CFGM_NOT_ENOUGH_SPACE)

@@ -203,9 +203,9 @@ static VBOXDISPLAY_DRIVER_TYPE getVBoxDisplayDriverType(PVBOXDISPLAYCONTEXT pCtx
                 /* WDDM driver can now have multiple incarnations,
                 * if the driver name contains VirtualBox, and does NOT match the XPDM name,
                 * assume it to be WDDM */
-                if (strcmp(&dispDevice.DeviceString[0], "NVIDIA Graphics Adapter") == 0)
+                if (strcmp(&dispDevice.DeviceString[0], "VirtualBox Graphics Adapter") == 0)
                     enmType = VBOXDISPLAY_DRIVER_TYPE_XPDM;
-                else if (strstr(&dispDevice.DeviceString[0], "NVIDIA"))
+                else if (strstr(&dispDevice.DeviceString[0], "VirtualBox"))
                     enmType = VBOXDISPLAY_DRIVER_TYPE_WDDM;
 
                 break;

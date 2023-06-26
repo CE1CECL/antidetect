@@ -7514,7 +7514,7 @@ vesa_pm_end:                                 ; 0xc4514 LB 0x1
 
 section _DATA progbits vstart=0x4600 align=1 ; size=0x3726 class=DATA group=DGROUP
 _msg_vga_init:                               ; 0xc4600 LB 0x2e
-    db  "Oracle VM VirtualBox Version 5.2.1 VGA BIOS", 00dh, 00ah, 000h
+    db  'Oracle VM VirtualBox Version 5.2.1 VGA BIOS', 00dh, 00ah, 000h
 _vga_modes:                                  ; 0xc462e LB 0x80
     db  000h, 000h, 000h, 004h, 000h, 0b8h, 0ffh, 002h, 001h, 000h, 000h, 004h, 000h, 0b8h, 0ffh, 002h
     db  002h, 000h, 000h, 004h, 000h, 0b8h, 0ffh, 002h, 003h, 000h, 000h, 004h, 000h, 0b8h, 0ffh, 002h

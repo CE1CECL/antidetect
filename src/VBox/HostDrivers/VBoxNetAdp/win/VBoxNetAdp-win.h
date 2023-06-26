@@ -31,16 +31,16 @@
 #define VBOXNETADP_VERSION_MAJOR             1
 #define VBOXNETADP_VERSION_MINOR             0
 
-#define VBOXNETADP_VENDOR_NAME               "Intel"
+#define VBOXNETADP_VENDOR_NAME               "Oracle"
 #define VBOXNETADP_VENDOR_ID                 0xFFFFFF
 #define VBOXNETADP_MCAST_LIST_SIZE           32
 #define VBOXNETADP_MAX_FRAME_SIZE            1518 // TODO: 14+4+1500
 
 //#define VBOXNETADP_NAME_UNIQUE               L"{7af6b074-048d-4444-bfce-1ecc8bc5cb76}"
-#define VBOXNETADP_NAME_SERVICE              L"VNetAdp"
+#define VBOXNETADP_NAME_SERVICE              L"VBoxNetAdp"
 
-#define VBOXNETADP_NAME_LINK                 L"\\DosDevices\\Global\\VNetAdp"
-#define VBOXNETADP_NAME_DEVICE               L"\\Device\\VNetAdp"
+#define VBOXNETADP_NAME_LINK                 L"\\DosDevices\\Global\\VBoxNetAdp"
+#define VBOXNETADP_NAME_DEVICE               L"\\Device\\VBoxNetAdp"
 
 #define VBOXNETADPWIN_TAG                    'ANBV'
 

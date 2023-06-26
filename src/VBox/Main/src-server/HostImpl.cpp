@@ -3321,7 +3321,7 @@ void Host::i_generateMACAddress(Utf8Str &mac)
      */
     Guid guid;
     guid.create();
-    mac = Utf8StrFmt("902E1C%02X%02X%02X",
+    mac = Utf8StrFmt("080027%02X%02X%02X",
                      guid.raw()->au8[0], guid.raw()->au8[1], guid.raw()->au8[2]);
 }
 

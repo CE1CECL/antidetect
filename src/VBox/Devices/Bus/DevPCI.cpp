@@ -488,7 +488,7 @@ static void pci_bios_init_device(PDEVPCIROOT pGlobals, PDEVPCIBUS pBus, PPDMPCID
                 }
                 break;
             case 0x0300:
-                if (vendor_id != 0x10de)
+                if (vendor_id != 0x80ee)
                     goto default_map;
                 /* VGA: map frame buffer to default Bochs VBE address */
                 devpciR3BiosInitSetRegionAddress(pBus, pPciDev, 0, 0xe0000000);

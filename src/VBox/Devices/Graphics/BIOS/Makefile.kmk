@@ -176,6 +176,17 @@ $$(VgaDefBiosLogo_0_OUTDIR)/VgaDefBiosLogoNY.c: $(PATH_ROOT)/src/VBox/Devices/Gr
 	$(QUIET)$(VBOX_BIN2C) VgaDefBiosLogoNY $< $@
 
 
-include $(FILE_KBUILD_SUB_FOOTER)
+ifdef VBOX_WITH_OPEN_WATCOM
+ #
+ # Install the symbol file for the BIOS.
+ #
+ INSTALLS += VBoxVgaBiosSym
+ VBoxVgaBiosSym_TEMPLATE = VBoxDbgSyms
+ VBoxVgaBiosSym_SOURCES = \
+ 	$(basename $(VBoxVgaBios386_1_TARGET)).sym \
+ 	$(basename $(VBoxVgaBios286_1_TARGET)).sym \
+ 	$(basename $(VBoxVgaBios8086_1_TARGET)).sym
+endif
 
+include $(FILE_KBUILD_SUB_FOOTER)
 

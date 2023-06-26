@@ -28,9 +28,9 @@
 %ifndef ___VBox_param_h
 %define ___VBox_param_h
 %if ARCH_BITS == 64
- %define VBOX_MAX_ALLOC_PAGE_COUNT   (_2G32 / PAGE_SIZE)
-%else
  %define VBOX_MAX_ALLOC_PAGE_COUNT   (_512M / PAGE_SIZE)
+%else
+ %define VBOX_MAX_ALLOC_PAGE_COUNT   (_256M / PAGE_SIZE)
 %endif
 %define MM_HYPER_AREA_ADDRESS       0xa0000000
 %define MM_HYPER_AREA_MAX_SIZE      (40U * _1M)
@@ -67,12 +67,12 @@
 %endif
 %define VMM_MIN_CPU_COUNT           1
 %define VMM_MAX_CPU_COUNT           64
-%define VBOX_PCI_VENDORID           (0x10de)
+%define VBOX_PCI_VENDORID           (0x80ee)
 %define VBOX_VENDORID               VBOX_PCI_VENDORID
-%define VBOX_DEVICEID               (0x1086)
+%define VBOX_DEVICEID               (0xbeef)
 %define VBOX_VESA_VENDORID          VBOX_PCI_VENDORID
-%define VBOX_VESA_DEVICEID          (0x1086)
+%define VBOX_VESA_DEVICEID          (0xbeef)
 %define VMMDEV_VENDORID             VBOX_PCI_VENDORID
-%define VMMDEV_DEVICEID             (0x1086)
+%define VMMDEV_DEVICEID             (0xcafe)
 %define VBOX_MAX_GSO_SIZE           0xfff0
 %endif

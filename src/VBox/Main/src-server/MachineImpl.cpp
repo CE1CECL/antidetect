@@ -154,13 +154,13 @@ Machine::HWData::HWData()
 {
     /* default values for a newly created machine */
     mHWVersion = Utf8StrFmt("%d", SchemaDefs::DefaultHardwareVersion);
-    mMemorySize = 4096;
-    mCPUCount = 2;
+    mMemorySize = 128;
+    mCPUCount = 1;
     mCPUHotPlugEnabled = false;
     mMemoryBalloonSize = 0;
     mPageFusionEnabled = false;
     mGraphicsControllerType = GraphicsControllerType_VBoxVGA;
-    mVRAMSize = 256;
+    mVRAMSize = 8;
     mAccelerate3DEnabled = false;
     mAccelerate2DVideoEnabled = false;
     mMonitorCount = 1;
@@ -176,18 +176,25 @@ Machine::HWData::HWData()
 
     mHWVirtExEnabled = true;
     mHWVirtExNestedPagingEnabled = true;
-	mHWVirtExLargePagesEnabled = true;
-
+#if HC_ARCH_BITS == 64 && !defined(RT_OS_LINUX)
+    mHWVirtExLargePagesEnabled = true;
+#else
+    /* Not supported on 32 bits hosts. */
+    mHWVirtExLargePagesEnabled = false;
+#endif
     mHWVirtExVPIDEnabled = true;
     mHWVirtExUXEnabled = true;
-    mHWVirtExForceEnabled = true;								/*0303*/
+    mHWVirtExForceEnabled = false;
+#if HC_ARCH_BITS == 64 || defined(RT_OS_WINDOWS) || defined(RT_OS_DARWIN)
     mPAEEnabled = true;
-
+#else
+    mPAEEnabled = false;
+#endif
     mLongMode =  HC_ARCH_BITS == 64 ? settings::Hardware::LongMode_Enabled : settings::Hardware::LongMode_Disabled;
     mTripleFaultReset = false;
     mAPIC = true;
-    mX2APIC = true;							/*0303*/
-    mHPETEnabled = false;					/*0303*/
+    mX2APIC = false;
+    mHPETEnabled = false;
     mCpuExecutionCap = 100; /* Maximum CPU execution cap by default. */
     mCpuIdPortabilityLevel = 0;
     mCpuProfile = "host";
@@ -206,7 +213,7 @@ Machine::HWData::HWData()
     mKeyboardHIDType = KeyboardHIDType_PS2Keyboard;
     mPointingHIDType = PointingHIDType_PS2Mouse;
     mChipsetType = ChipsetType_PIIX3;
-    mParavirtProvider = ParavirtProvider_Legacy;
+    mParavirtProvider = ParavirtProvider_Default;
     mEmulatedUSBCardReaderEnabled = FALSE;
 
     for (size_t i = 0; i < RT_ELEMENTS(mCPUAttached); ++i)
@@ -2025,8 +2032,8 @@ HRESULT Machine::getVRAMSize(ULONG *aVRAMSize)
 
 HRESULT Machine::setVRAMSize(ULONG aVRAMSize)
 {
-    /* check VRAM limits*/
-    if (aVRAMSize < SchemaDefs::MinGuestVRAM)
+    /* check VRAM limits */
+    if (aVRAMSize > SchemaDefs::MaxGuestVRAM)
         return setError(E_INVALIDARG,
                         tr("Invalid VRAM size: %lu MB (must be in range [%lu, %lu] MB)"),
                         aVRAMSize, SchemaDefs::MinGuestVRAM, SchemaDefs::MaxGuestVRAM);
@@ -2034,8 +2041,6 @@ HRESULT Machine::setVRAMSize(ULONG aVRAMSize)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     HRESULT rc = i_checkStateDependency(MutableStateDep);
-	
-
     if (FAILED(rc)) return rc;
 
     i_setModified(IsModified_MachineData);

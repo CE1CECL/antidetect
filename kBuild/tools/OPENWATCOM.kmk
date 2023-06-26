@@ -45,7 +45,7 @@ ifeq ($(PATH_TOOL_OPENWATCOM),)
  endif
  ifeq ($(PATH_TOOL_OPENWATCOM)$(KBUILD_HOST),os2)
   if1of ($(USER) $(USERNAME) $(LOGNAME), bird)
-   PATH_TOOL_OPENWATCOM := $(wildcard C:/Programs/WATCOM2)
+   PATH_TOOL_OPENWATCOM := $(wildcard d:/dev/Watcom/v1.*)
   endif
  endif
  PATH_TOOL_OPENWATCOM := $(firstword $(sort $(PATH_TOOL_OPENWATCOM)))
@@ -139,7 +139,7 @@ else
  TOOL_OPENWATCOM_PATHLESS :=
  TOOL_OPENWATCOM_ENV_SETUP ?= $(REDIRECT) \
  	-E 'LIB=$1' \
- 	-E 'INCLUDE=C:/Programs/WATCOM2/H;C:/Programs/WATCOM2/H/NT;C:/Programs/WATCOM2/H/NT/DIRECTX;C:/Programs/WATCOM2/H/NT/DDK' \
+ 	-E 'INCLUDE=' \
  	$2 --
  TOOL_OPENWATCOM_CC    ?= wcc386$(HOSTSUFF_EXE)
  TOOL_OPENWATCOM_CC16  ?= wcc$(HOSTSUFF_EXE)

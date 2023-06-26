@@ -46,7 +46,7 @@
 
 /** @name USB MSD vendor and product IDs
  * @{ */
-#define VBOX_USB_VENDOR             0x0477
+#define VBOX_USB_VENDOR             0x80EE
 #define USBMSD_PID_HD               0x0030
 #define USBMSD_PID_CD               0x0031
 /** @} */
@@ -269,7 +269,7 @@ typedef USBMSD *PUSBMSD;
 *********************************************************************************************************************************/
 static const PDMUSBDESCCACHESTRING g_aUsbMsdStrings_en_US[] =
 {
-    { USBMSD_STR_ID_MANUFACTURER,   "Logitech"   },
+    { USBMSD_STR_ID_MANUFACTURER,   "VirtualBox"   },
     { USBMSD_STR_ID_PRODUCT_HD,     "USB Harddisk" },
     { USBMSD_STR_ID_PRODUCT_CDROM,  "USB CD-ROM"   }
 };

@@ -526,7 +526,7 @@ sun_xvm_uninstall:
 
 innotek_check:
 
-  ; Check for old "Vektor" Guest Additions" before rebranding to "Sun"
+  ; Check for old "innotek" Guest Additions" before rebranding to "Sun"
   ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\innotek VirtualBox Guest Additions" "UninstallString"
   StrCmp $0 "" exit ; If string is empty, innotek Guest Additions are probably not installed (anymore)
 

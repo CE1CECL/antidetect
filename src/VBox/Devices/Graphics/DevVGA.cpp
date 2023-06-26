@@ -6183,6 +6183,15 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
      */
     rc = CFGMR3QueryU32Def(pCfg, "VRamSize", &pThis->vram_size, VGA_VRAM_DEFAULT);
     AssertLogRelRCReturn(rc, rc);
+    if (pThis->vram_size > VGA_VRAM_MAX)
+        return PDMDevHlpVMSetError(pDevIns, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                   "VRamSize is too large, %#x, max %#x", pThis->vram_size, VGA_VRAM_MAX);
+    if (pThis->vram_size < VGA_VRAM_MIN)
+        return PDMDevHlpVMSetError(pDevIns, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                   "VRamSize is too small, %#x, max %#x", pThis->vram_size, VGA_VRAM_MIN);
+    if (pThis->vram_size & (_256K - 1)) /* Make sure there are no partial banks even in planar modes. */
+        return PDMDevHlpVMSetError(pDevIns, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                   "VRamSize is not a multiple of 256K (%#x)", pThis->vram_size);
 
     rc = CFGMR3QueryU32Def(pCfg, "MonitorCount", &pThis->cMonitors, 1);
     AssertLogRelRCReturn(rc, rc);
@@ -6235,8 +6244,8 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     else
     {
 #endif /* VBOX_WITH_VMSVGA */
-    PCIDevSetVendorId(  &pThis->Dev, 0x10de);   /* PCI vendor, just a free bogus value */
-    PCIDevSetDeviceId(  &pThis->Dev, 0x13c0);
+    PCIDevSetVendorId(  &pThis->Dev, 0x80ee);   /* PCI vendor, just a free bogus value */
+    PCIDevSetDeviceId(  &pThis->Dev, 0xbeef);
 #ifdef VBOX_WITH_VMSVGA
     }
 #endif

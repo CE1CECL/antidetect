@@ -60,7 +60,7 @@
 #include <VBox/version.h>
 #endif
 
-static  const char  bios_cvs_version_string[] = "American Megatrends " VBOX_VERSION_STRING;
+static  const char  bios_cvs_version_string[] = "VirtualBox " VBOX_VERSION_STRING;
 
 uint8_t read_byte(uint16_t seg, uint16_t offset)
 {
@@ -172,7 +172,7 @@ void set_mode(uint8_t mode);
 //#undef VBOX
 
 #define BX_PCIBIOS  1
-#define BX_APPNAME          "Antidetect"
+#define BX_APPNAME          "VirtualBox"
 #define BIOS_BUILD_DATE     __DATE__
 //--------------------------------------------------------------------------
 // print_bios_banner

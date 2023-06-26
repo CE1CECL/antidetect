@@ -2612,7 +2612,7 @@ static void acpiR3PrepareHeader(ACPIState *pThis, ACPITBLHEADER *header,
     header->u32Length             = RT_H2LE_U32(u32Length);
     header->u8Revision            = u8Revision;
     memcpy(header->au8OemId, pThis->au8OemId, 6);
-    memcpy(header->au8OemTabId, "AMI ", 4);
+    memcpy(header->au8OemTabId, "VBOX", 4);
     memcpy(header->au8OemTabId+4, au8Signature, 4);
     header->u32OemRevision        = RT_H2LE_U32(1);
     memcpy(header->au8CreatorId, pThis->au8CreatorId, 4);
@@ -3859,7 +3859,7 @@ static DECLCALLBACK(int) acpiR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     }
 
     char *pszOemId = NULL;
-    rc = CFGMR3QueryStringAllocDef(pCfg, "AcpiOemId", &pszOemId, "ALASKA");
+    rc = CFGMR3QueryStringAllocDef(pCfg, "AcpiOemId", &pszOemId, "VBOX  ");
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Querying \"AcpiOemId\" as string failed"));

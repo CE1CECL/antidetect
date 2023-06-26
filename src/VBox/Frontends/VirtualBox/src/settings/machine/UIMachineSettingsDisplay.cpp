@@ -277,8 +277,8 @@ struct UIDataSettingsMachineDisplay
 
 UIMachineSettingsDisplay::UIMachineSettingsDisplay()
     : m_iMinVRAM(0)
-    , m_iMaxVRAM(2048)
-    , m_iMaxVRAMVisible(2048)
+    , m_iMaxVRAM(0)
+    , m_iMaxVRAMVisible(0)
     , m_iInitialVRAM(0)
 #ifdef VBOX_WITH_VIDEOHWACCEL
     , m_f2DVideoAccelerationSupported(false)
@@ -551,7 +551,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
             /* 3D acceleration video RAM amount test: */
             else if (m_pCheckbox3D->isChecked() && m_fWddmModeSupported)
             {
-                uNeedBytes = qMax(uNeedBytes, (quint64) 1024 * _1M);					/*0303*/
+                uNeedBytes = qMax(uNeedBytes, (quint64) 128 * _1M);
                 if ((quint64)m_pEditorVideoMemorySize->value() * _1M < uNeedBytes)
                 {
                     message.second << tr("The virtual machine is set up to use hardware graphics acceleration "
@@ -1222,11 +1222,11 @@ void UIMachineSettingsDisplay::checkVRAMRequirements()
         m_iMaxVRAMVisible = m_iMaxVRAM;
 
     /* No less than 128MB (if possible): */
-    /*if (m_iMaxVRAMVisible < 1024 && m_iMaxVRAM >= 1024)*/
-        m_iMaxVRAMVisible = 1024; 
+    if (m_iMaxVRAMVisible < 128 && m_iMaxVRAM >= 128)
+        m_iMaxVRAMVisible = 128;
 
     /* No less than initial VRAM size (wtf?): */
-    /*if (m_iMaxVRAMVisible < m_iInitialVRAM)*/
+    if (m_iMaxVRAMVisible < m_iInitialVRAM)
         m_iMaxVRAMVisible = m_iInitialVRAM;
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
@@ -1241,8 +1241,8 @@ void UIMachineSettingsDisplay::checkVRAMRequirements()
     {
         uNeedMBytes = qMax(uNeedMBytes, (quint64) 128);
         /* No less than 256MB (if possible): */
-        /*if (m_iMaxVRAMVisible < 2048 && m_iMaxVRAM >= 2048)*/
-            m_iMaxVRAMVisible = 2048;
+        if (m_iMaxVRAMVisible < 256 && m_iMaxVRAM >= 256)
+            m_iMaxVRAMVisible = 256;
     }
 #endif
 

@@ -16,7 +16,7 @@
 [Defines]
   INF_VERSION                    = 0x00010005
   BASE_NAME                      = GetHostByName
-  FILE_GUID                      = 70FB9CE0-2CB1-4fd7-101E-AB4B6CF4B43F
+  FILE_GUID                      = 70FB9CE0-2CB1-4fd7-80EE-AB4B6CF4B43F
   MODULE_TYPE                    = UEFI_APPLICATION
   VERSION_STRING                 = 1.0
   ENTRY_POINT                    = ShellCEntryLib
